@@ -1,5 +1,5 @@
 # mainak55512_arena.c3l
-C3 binding for (https://github.com/mainak55512/arena/)[arena] allocator in C.
+C3 binding for [arena](https://github.com/mainak55512/arena/) allocator in C.
 
 # Usage
 ```c3
