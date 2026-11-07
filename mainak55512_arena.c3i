@@ -1,0 +1,30 @@
+module mainak55512_arena;
+
+alias Arena = void;
+
+<* Allocates memory on Heap with maximum memory alignment *>
+fn void *align_alloc(usz capacity) @cname("m_align_alloc");
+
+<* Frees memory allocated by m_align_alloc or m_align_realloc *>
+fn void align_free(void *ptr) @cname("m_align_free");
+
+<* Re-allocates memory on Heap with maximum memory alignment *>
+fn void* align_realloc(void *ptr,
+		       usz old_size,
+		       usz new_size) @cname("m_align_realloc");
+
+<* Initiates an arena with the given capacity *>
+fn Arena *arena_init(usz capacity) @cname("arena_init");
+
+<* Allocates a chunk on the arena, when the arena
+   gets full, it calls `arena_init` again
+   internally to allocate more memory *>
+fn void *arena_alloc(Arena *arena, usz size) @cname("arena_alloc");
+
+<* Frees the arena and all the allocations done on it *>
+fn void arena_free(Arena **arena) @cname("arena_free");
+
+<* Wipes out all the allocations done on the arena
+   and restores it to its initial capacity *>
+fn void arena_reset(Arena **arena) @cname("arena_reset");
+
